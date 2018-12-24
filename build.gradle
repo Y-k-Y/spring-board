@@ -30,5 +30,6 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     runtimeOnly('com.h2database:h2')
     compileOnly('org.projectlombok:lombok')
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

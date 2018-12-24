@@ -1,14 +1,14 @@
-package com.yk.board.web;
+package com.yk.board.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class WebRestController {
+public class BasicController {
 
-    @GetMapping("/hello")
-    public String hello(){
+    @GetMapping("/")
+    public String welcome(){
 
-        return "Hello Spring!!";
+        return "Welcome";
     }
 }
