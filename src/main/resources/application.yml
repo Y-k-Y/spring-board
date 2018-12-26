@@ -13,7 +13,7 @@ spring:
     password: ys0109bf
   jpa:
     hibernate:
-#      ddl-auto: create
+      #ddl-auto: create
       ddl-auto: none
     show-sql: true
     database: mysql
