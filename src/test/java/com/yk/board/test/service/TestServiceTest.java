@@ -1,16 +1,20 @@
 package com.yk.board.test.service;
 
+import com.yk.board.test.DTO.UserDTO;
 import com.yk.board.test.domain.TestEntity;
 import com.yk.board.test.repository.TestRepository;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TestServiceTest {
 
     @Autowired
@@ -18,6 +22,24 @@ public class TestServiceTest {
 
     @Autowired
     TestRepository testRepository;
+
+    @Test
+    public void createUser(){
+
+        // given
+        UserDTO userDTO = UserDTO.builder()
+                .email("Zzzzz.co.kr@gmail.com")
+                .name("YK")
+                .build();
+
+        // when
+        testService.createUser(userDTO);
+
+        // then
+        TestEntity testEntity = testRepository.findByEmail(userDTO.getEmail());
+        assertThat(testEntity.getEmail()).isEqualTo(userDTO.getEmail());
+        assertThat(testEntity.getName()).isEqualTo(userDTO.getName());
+    }
 
     @Test
     public void deleteUser(){
@@ -30,7 +52,7 @@ public class TestServiceTest {
 
         // then
         List<TestEntity> list = testRepository.findAll();
-        assertThat(list.size(), is(17));
+        assertThat(list.size()).isEqualTo(17);
     }
 
     @Test
@@ -47,6 +69,6 @@ public class TestServiceTest {
 
         // then
         TestEntity testEntity = testRepository.getOne(id);
-        assertThat(testEntity.getName(), is(newName));
+        assertThat(testEntity.getName()).isEqualTo(newName);
     }
 }

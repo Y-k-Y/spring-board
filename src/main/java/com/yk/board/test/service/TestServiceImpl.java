@@ -1,5 +1,6 @@
 package com.yk.board.test.service;
 
+import com.yk.board.test.DTO.UserDTO;
 import com.yk.board.test.domain.TestEntity;
 import com.yk.board.test.repository.TestRepository;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,13 @@ import java.util.List;
 public class TestServiceImpl implements TestService{
 
     TestRepository testRepository;
+
+    @Override
+    @Transactional
+    public void createUser(UserDTO userDTO){
+
+        testRepository.save(userDTO.toEntity());
+    }
 
     @Override
     @Transactional(readOnly = true)

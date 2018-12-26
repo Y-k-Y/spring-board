@@ -1,10 +1,13 @@
 package com.yk.board.test.service;
 
+import com.yk.board.test.DTO.UserDTO;
 import com.yk.board.test.domain.TestEntity;
 
 import java.util.List;
 
 public interface TestService {
+
+    public void createUser(UserDTO userDTO);
 
     public List<TestEntity> allUsers();
 

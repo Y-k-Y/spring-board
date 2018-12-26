@@ -29,7 +29,7 @@ public class TestEntity {
     private Timestamp updateDate;
 
     @Builder
-    TestEntity(String email, String name){
+    public TestEntity(String email, String name){
 
         this.email = email;
         this.name = name;
