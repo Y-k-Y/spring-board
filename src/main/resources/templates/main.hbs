@@ -28,14 +28,17 @@
             {{#each posts}}
                 <tr>
                     <td>{{id}}</td>
-                    <td>{{title}}</td>
+                    <td class="td-title" data-toggle="modal" data-target="#postsDetail">{{title}}</td>
                     <td>{{author}}</td>
                     <td>{{updateDate}}</td>
+                    <td hidden="hidden">{{content}}</td>
                 </tr>
             {{/each}}
             </tbody>
         </table>
     </div>
+
+    <div id="detail-point" hidden="hidden"></div>
 
     <!-- Modal 영역 -->
     <div class="modal fade" id="savePostsModal" tabindex="1" role="dialog" aria-labelledby="savePostsModal" aria-hidden="true">

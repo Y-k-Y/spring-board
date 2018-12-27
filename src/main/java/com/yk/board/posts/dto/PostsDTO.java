@@ -30,11 +30,10 @@ public class PostsDTO {
     public PostsDTO(Posts posts) {
         id = posts.getId();
         title = posts.getTitle();
+        content = posts.getContent();
         author = posts.getAuthor();
         updateDate = posts.getUpdateDate();
     }
-
-
 
     public Posts toEntity() {
 
