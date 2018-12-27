@@ -1,6 +1,6 @@
 package com.yk.board.test.service;
 
-import com.yk.board.test.DTO.UserDTO;
+import com.yk.board.test.dto.UserDTO;
 import com.yk.board.test.domain.TestEntity;
 import com.yk.board.test.repository.TestRepository;
 import org.junit.Test;

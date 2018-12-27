@@ -1,4 +1,4 @@
-package com.yk.board.test.DTO;
+package com.yk.board.test.dto;
 
 import com.yk.board.test.domain.TestEntity;
 import lombok.*;

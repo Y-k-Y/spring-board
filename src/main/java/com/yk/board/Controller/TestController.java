@@ -25,7 +25,7 @@ public class TestController {
         TestEntity testEntity = null;
         for(int i = 0; i < list.size(); i++) {
             testEntity = list.get(i);
-            sb.append(testEntity.getId() + testEntity.getName() + testEntity.getEmail() + testEntity.getRegDate() + testEntity.getUpdateDate());
+            sb.append(testEntity.getName() + testEntity.getEmail() + "\n");
         }
         return sb.toString();
     }
