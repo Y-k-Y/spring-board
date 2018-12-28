@@ -1,0 +1,38 @@
+{
+  "name": "spring-board",
+  "authors": [
+    "Y_K_Y <zzzzz.co.kr@gmail.com>"
+  ],
+  "description": "Springboot board",
+  "main": "main.hbs",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1"
+  },
+  "install" : {
+	"base" : "./src/main/resources/static/bower/",
+	"path" : {
+		"css" : "{name}/css",
+		"js": "{name}/js"
+	},
+	"sources": {
+		"jquery": [
+			"./bower_components/jquery/dist/jquery.min.js"
+		],
+		"bootstrap": [
+			"./bower_components/bootstrap/dist/css/bootstrap.min.css",
+			"./bower_components/bootstrap/dist/js/bootstrap.min.js"
+		]
+	}
+	}	
+}

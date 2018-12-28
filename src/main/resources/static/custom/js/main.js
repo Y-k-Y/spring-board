@@ -127,7 +127,6 @@
             content: $('#read-content').val()
         };
 
-
         $.ajax({
             type: 'PUT',
             url: '/board/' + pNum,
