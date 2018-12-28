@@ -8,6 +8,7 @@ import java.util.List;
 public interface PostsService {
 
     public List<Posts> getAllPosts();
-    public void save(PostsDTO postsDTO);
     public List<PostsDTO> findAllDesc();
+    public void save(PostsDTO postsDTO);
+    public void delete(Long id);
 }

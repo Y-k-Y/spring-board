@@ -24,13 +24,11 @@ spring:
   devtools:
     livereload:
       enabled: true
-  freemarker:
-    cache: false
 
 logging:
   level:
     org:
       hibernate: info
 
-handlebars:
+handlebarsca:
   cache: false

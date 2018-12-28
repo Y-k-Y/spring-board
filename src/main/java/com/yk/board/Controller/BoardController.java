@@ -5,9 +5,7 @@ import com.yk.board.posts.service.PostsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -21,5 +19,12 @@ public class BoardController {
     public void savePosts(@RequestBody PostsDTO postsDTO){
 
         postsService.save(postsDTO);
+    }
+
+    @DeleteMapping("/board/{pNum}")
+    @ApiOperation(value = "delete posts", notes = "api which deletes posts")
+    public void deletePosts(@PathVariable("pNum")Long id){
+
+        postsService.delete(id);
     }
 }

@@ -23,6 +23,15 @@ public class PostsServiceImpl implements PostsService{
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<PostsDTO> findAllDesc(){
+
+        return postsRepository.findAllDesc()
+                .map(PostsDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public void save(PostsDTO postsDTO) {
 
@@ -30,11 +39,9 @@ public class PostsServiceImpl implements PostsService{
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<PostsDTO> findAllDesc(){
+    @Transactional
+    public void delete(Long id) {
 
-        return postsRepository.findAllDesc()
-                .map(PostsDTO::new)
-                .collect(Collectors.toList());
+        postsRepository.deleteById(id);
     }
 }

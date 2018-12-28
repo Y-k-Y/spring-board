@@ -43,4 +43,14 @@ public class PostsServiceTest {
         assertThat(posts.getContent()).isEqualTo(postsDTO.getContent());
         assertThat(posts.getAuthor()).isEqualTo(postsDTO.getAuthor());
     }
+
+    @Test
+    public void deletePosts(){
+
+        // when
+        postsService.delete(14L);
+
+        // then
+        assertThat(postsRepository.count()).isEqualTo(14L);
+    }
 }

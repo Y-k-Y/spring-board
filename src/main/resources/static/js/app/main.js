@@ -4,10 +4,12 @@
         $('#btn-save').on('click', function(){
             _this.save(); // main 객체의 save 함수 즉, main.save()를 실행시키는 과정
         });
+
         $('.td-title').on('click', function(){
             _this.read(this);
-        })
+        });
     },
+
     save : function(){
         var data = {
             title: $('#title').val(),
@@ -30,6 +32,7 @@
             alert(error);
         });
     },
+
     read : function(td){
         var title = $(td).text();
         var author = $(td).next().text();
@@ -61,6 +64,7 @@
             "                    </form>\n" +
             "                </div>\n" +
             "                <div class=\"modal-footer\">\n" +
+            "                    <button type=\"button\" class=\"btn btn-secondary\" id=\"btn-delete\">삭제</button>\n" +
             "                    <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">확인</button>\n" +
             "                </div>\n" +
             "            </div>\n" +
@@ -68,9 +72,27 @@
             "    </div>";
 
         $('#detail-point').after(modal);
-
         $('#read-title').val(title);
         $('#read-author').val(author);
+
+        $('#btn-delete').on('click', function(){
+            main.delete($(td).prev().text());
+        });
+    },
+
+    delete : function(posts){
+        var pNum = posts;
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/board/' + pNum,
+        }).done(function(){
+            alert('글이 삭제되었습니다.');
+            location.reload();
+        }).fail(function(error){
+            console.log('An Exception occurred...');
+            alert(error);
+        });
     }
 
 };
