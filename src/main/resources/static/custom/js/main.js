@@ -1,12 +1,17 @@
 ﻿var main={
     init : function() {
-        var _this = this; // main 객체를 this로 받아서 _this에 대입시킨다.
+        /* 브라우저의 scope 는 공용으로 같이 쓰인다.
+           그렇기 때문에 나중에 불리어진 JS에 main 있을 경우
+           먼저 불리어진 JS의 main을 덮어쓰게 된다.
+           이런 문제를 피하기 위해 this로 받아서 사용함.
+         */
+        var _this = this;
         $('#btn-save').on('click', function () {
-            _this.save(); // main 객체의 save 함수 즉, main.save()를 실행시키는 과정
+            _this.save();
         });
 
         $('.td-title').on('click', function () {
-            _this.read(this);
+            _this.read(this, _this);
         });
     },
 
@@ -31,7 +36,7 @@
         });
     },
 
-    read : function(td){
+    read : function(td, _this){
         var title = $(td).text();
         var author = $(td).next().text();
         var content = $(td).next().next().next().text();
@@ -63,8 +68,8 @@
             "                </div>\n" +
             "                <div class=\"modal-footer\" id=\"modal-footer-normal\">\n" +
             "                    <button type=\"button\" class=\"btn btn-danger\" id=\"btn-delete\">삭제</button>\n" +
-            "                    <button type=\"button\" class=\"btn btn-secondary\" id=\"btn-modify\">수정</button>\n" +
-            "                    <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">확인</button>\n" +
+            "                    <button type=\"button\" class=\"btn btn-primary\" id=\"btn-modify\">수정</button>\n" +
+            "                    <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">확인</button>\n" +
             "                </div>\n" +
             "                <div class=\"modal-footer\" id=\"modal-footer-modify\" hidden=\"hidden\">\n" +
             "                    <button type=\"button\" class=\"btn btn-warning\" id=\"btn-modify-cancel\">취소</button>\n" +
@@ -79,7 +84,7 @@
         $('#read-author').val(author);
 
         $('#btn-delete').on('click', function(){
-            main.delete($(td).prev().text());
+            _this.delete($(td).prev().text());
         });
 
         $('#btn-modify').on('click', function(){
@@ -99,7 +104,7 @@
         });
 
         $('#btn-modify-ok').on('click', function(){
-            main.modify($(td).prev().text());
+            _this.modify($(td).prev().text());
 
         });
     },
