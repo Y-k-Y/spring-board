@@ -44,4 +44,12 @@ public class PostsServiceImpl implements PostsService{
 
         postsRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public void modify(PostsDTO postsDTO, Long id) {
+
+        Posts posts = postsRepository.getOne(id);
+        posts.modify(postsDTO.getTitle(), postsDTO.getContent(), postsDTO.getAuthor());
+    }
 }

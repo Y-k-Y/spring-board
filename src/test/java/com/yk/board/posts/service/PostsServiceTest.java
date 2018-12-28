@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -52,5 +53,25 @@ public class PostsServiceTest {
 
         // then
         assertThat(postsRepository.count()).isEqualTo(14L);
+    }
+
+    @Test
+    @Transactional
+    public void modifyPosts(){
+
+        // given
+        PostsDTO postsDTO = PostsDTO.builder()
+                                .title("안녕1")
+                                .content("안녕2")
+                                .author("Zzzzz.co.kr@gmail.com")
+                                .build();
+        // when
+        postsService.modify(postsDTO, 8L);
+
+        // then
+        Posts posts = postsRepository.getOne(8L);
+        assertThat(posts.getTitle()).isEqualTo(postsDTO.getTitle());
+        assertThat(posts.getContent()).isEqualTo(postsDTO.getContent());
+        assertThat(posts.getAuthor()).isEqualTo(postsDTO.getAuthor());
     }
 }

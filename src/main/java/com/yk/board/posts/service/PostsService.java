@@ -11,4 +11,5 @@ public interface PostsService {
     public List<PostsDTO> findAllDesc();
     public void save(PostsDTO postsDTO);
     public void delete(Long id);
+    public void modify(PostsDTO postsDTO, Long id);
 }

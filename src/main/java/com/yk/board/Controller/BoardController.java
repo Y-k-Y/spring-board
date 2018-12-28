@@ -16,15 +16,22 @@ public class BoardController {
 
     @PostMapping("/board/posts")
     @ApiOperation(value = "save posts", notes = "api which save posts")
-    public void savePosts(@RequestBody PostsDTO postsDTO){
+    public void savePosts(@RequestBody PostsDTO postsDTO) {
 
         postsService.save(postsDTO);
     }
 
     @DeleteMapping("/board/{pNum}")
     @ApiOperation(value = "delete posts", notes = "api which deletes posts")
-    public void deletePosts(@PathVariable("pNum")Long id){
+    public void deletePosts(@PathVariable("pNum") Long id) {
 
         postsService.delete(id);
+    }
+
+    @PutMapping("/board/{pNum}")
+    @ApiOperation(value = "modify posts", notes = "api which modifies posts")
+    public void modifyPosts(@RequestBody PostsDTO postsDTO, @PathVariable("pNum") Long id) {
+
+        postsService.modify(postsDTO, id);
     }
 }
